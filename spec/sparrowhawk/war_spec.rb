@@ -19,7 +19,6 @@ module Sparrowhawk
         war.entries << Entry.new('test.txt', 'Some text')
         in_current_dir { war.build.should have_entry('test.txt') }
       end
-
     end
 
   end

@@ -7,4 +7,5 @@ group :test, :development do
   gem "rspec"
   gem "cucumber"
   gem "aruba"
+  gem "nokogiri"
 end

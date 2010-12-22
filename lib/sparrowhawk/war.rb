@@ -9,6 +9,7 @@ module Sparrowhawk
       def build
         war = new
         war.entries << PublicDirMapper.new.to_a
+        war.entries << WebXmlEntry.new
         war.build
       end
     end

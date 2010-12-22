@@ -6,6 +6,7 @@ module Sparrowhawk
   class RakeTask < ::Rake::TaskLib
 
     def initialize
+
       task :war do
         War.build
       end
