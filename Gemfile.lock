@@ -16,6 +16,8 @@ GEM
     gherkin (2.3.2)
       json (~> 1.4.6)
       term-ansicolor (~> 1.0.5)
+    jruby-jars (1.5.2)
+    jruby-rack (1.0.3)
     json (1.4.6)
     nokogiri (1.4.4)
     rake (0.8.7)
@@ -36,6 +38,8 @@ PLATFORMS
 DEPENDENCIES
   aruba
   cucumber
+  jruby-jars
+  jruby-rack
   nokogiri
   rake
   rspec

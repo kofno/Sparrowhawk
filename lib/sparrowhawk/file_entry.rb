@@ -10,7 +10,7 @@ module Sparrowhawk
     end
 
     def content
-      @content ||= IO.read(source)
+      IO.read(source)
     end
 
   end

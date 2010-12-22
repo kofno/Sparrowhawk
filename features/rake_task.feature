@@ -26,3 +26,4 @@ Feature: Rake task
      When I run "unzip aruba.war"
      Then the output should contain "inflating: index.html"
       And the output should contain "inflating: WEB-INF/web.xml"
+      And the output should contain "inflating: META-INF/MANIFEST.MF"

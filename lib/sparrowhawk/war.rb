@@ -10,6 +10,11 @@ module Sparrowhawk
         war = new
         war.entries << PublicDirMapper.new.to_a
         war.entries << WebXmlEntry.new
+        war.entries << ManifestEntry.new
+        war.entries << ApplicationFilesMapper.new.to_a
+        war.entries << JRubyCoreJarEntry.new
+        war.entries << JRubyStdLibJarEntry.new
+        war.entries << JRubyRackJarEntry.new
         war.build
       end
     end

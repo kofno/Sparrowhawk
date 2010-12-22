@@ -2,13 +2,20 @@ require 'rubygems'
 require 'bundler/setup'
 
 module Sparrowhawk
+  VERSION = "1.0.0.pre"
 
-  autoload :War             ,'sparrowhawk/war'
+  autoload :War                     ,'sparrowhawk/war'
 
-  autoload :Entry           ,'sparrowhawk/entry'
-  autoload :FileEntry       ,'sparrowhawk/file_entry'
-  autoload :WebXmlEntry     ,'sparrowhawk/web_xml_entry'
+  autoload :Entry                   ,'sparrowhawk/entry'
+  autoload :FileEntry               ,'sparrowhawk/file_entry'
+  autoload :WebXmlEntry             ,'sparrowhawk/web_xml_entry'
+  autoload :ManifestEntry           ,'sparrowhawk/manifest_entry'
+  autoload :JarEntry                ,'sparrowhawk/jar_entry'
+  autoload :JRubyCoreJarEntry       ,'sparrowhawk/jruby_core_jar_entry'
+  autoload :JRubyStdLibJarEntry     ,'sparrowhawk/jruby_stdlib_jar_entry'
+  autoload :JRubyRackJarEntry       ,'sparrowhawk/jruby_rack_jar_entry'
 
-  autoload :PublicDirMapper ,'sparrowhawk/public_dir_mapper'
-
+  autoload :FileEntryMapper         ,'sparrowhawk/file_entry_mapper'
+  autoload :PublicDirMapper         ,'sparrowhawk/public_dir_mapper'
+  autoload :ApplicationFilesMapper  ,'sparrowhawk/application_files_mapper'
 end
