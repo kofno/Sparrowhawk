@@ -14,6 +14,8 @@ module Sparrowhawk
   autoload :JRubyCoreJarEntry       ,'sparrowhawk/jruby_core_jar_entry'
   autoload :JRubyStdLibJarEntry     ,'sparrowhawk/jruby_stdlib_jar_entry'
   autoload :JRubyRackJarEntry       ,'sparrowhawk/jruby_rack_jar_entry'
+  autoload :GemfileEntry            ,'sparrowhawk/gemfile_entry'
+  autoload :LockfileEntry           ,'sparrowhawk/lockfile_entry'
 
   autoload :FileEntryMapper         ,'sparrowhawk/file_entry_mapper'
   autoload :PublicDirMapper         ,'sparrowhawk/public_dir_mapper'

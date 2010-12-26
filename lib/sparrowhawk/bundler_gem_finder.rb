@@ -26,7 +26,7 @@ module Sparrowhawk
     def vendor_cache
       @vendor_cache ||= Index.build do |idx|
         Dir['vendor/cache/*.gem'].each do |gemfile|
-          spec ||= Gem::Format.from_file_by_path(gemfile).spec
+          spec ||= gem_from_file_by_path(gemfile).spec
           idx << spec
           spec.source = gemfile
         end
