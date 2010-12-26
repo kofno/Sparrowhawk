@@ -15,6 +15,8 @@ module Sparrowhawk
         war.entries << JRubyCoreJarEntry.new
         war.entries << JRubyStdLibJarEntry.new
         war.entries << JRubyRackJarEntry.new
+        gem_finder = BundlerGemFinder.new ::Bundler.default_lockfile
+        war.entries << GemMapper.new(gem_finder).to_a
         war.build
       end
     end

@@ -7,6 +7,27 @@ Feature: Rake task
        """
        <html><head><title>Welcome!</title></head><bobdy><h1>Welcome!</h1></body></html>
        """
+      And a file named "Gemfile.lock" with:
+       """
+       GEM
+         remote: http://rubygems.org/
+         specs:
+           nokogiri (1.4.3.1)
+           nokogiri (1.4.3.1-java)
+             weakling (>= 0.0.3)
+
+       PLATFORMS
+         java
+         ruby
+
+       DEPENDENCIES
+         nokogiri
+       """
+      And a file named "Gemfile" with:
+       """
+       source :gemcutter
+       gem 'nokogiri'
+       """
 
 
   @announce

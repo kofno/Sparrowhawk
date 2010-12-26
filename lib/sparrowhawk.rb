@@ -18,4 +18,9 @@ module Sparrowhawk
   autoload :FileEntryMapper         ,'sparrowhawk/file_entry_mapper'
   autoload :PublicDirMapper         ,'sparrowhawk/public_dir_mapper'
   autoload :ApplicationFilesMapper  ,'sparrowhawk/application_files_mapper'
+  autoload :GemMapper               ,'sparrowhawk/gem_mapper'
+
+  autoload :BundlerGemFinder        ,'sparrowhawk/bundler_gem_finder'
+
+  autoload :Index                   ,'sparrowhawk/index'
 end
