@@ -2,7 +2,7 @@ require 'rubygems'
 require 'bundler/setup'
 
 module Sparrowhawk
-  VERSION = "1.0.0.pre"
+  VERSION = "0.9.0.pre"
 
   autoload :War                     ,'sparrowhawk/war'
 
@@ -23,6 +23,6 @@ module Sparrowhawk
   autoload :GemMapper               ,'sparrowhawk/gem_mapper'
 
   autoload :BundlerGemFinder        ,'sparrowhawk/bundler_gem_finder'
-
   autoload :Index                   ,'sparrowhawk/index'
+  autoload :LockfileParser          ,'sparrowhawk/lockfile_parser'
 end

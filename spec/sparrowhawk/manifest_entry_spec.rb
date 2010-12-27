@@ -14,7 +14,7 @@ module Sparrowhawk
     end
 
     it "returns content w/ the application name and version" do
-      entry.content.should =~ /^Created-By: 1\.0\.0\.pre \(Sparrowhawk\)$/
+      entry.content.should =~ /^Created-By: #{Sparrowhawk::VERSION} \(Sparrowhawk\)$/
     end
   end
 

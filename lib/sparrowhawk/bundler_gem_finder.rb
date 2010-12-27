@@ -6,7 +6,7 @@ module Sparrowhawk
     attr_reader :definition
 
     def initialize lockfile
-      @lockfile = Bundler::LockfileParser.new IO.read(lockfile)
+      @lockfile = LockfileParser.new IO.read(lockfile)
     end
 
     def each
@@ -34,7 +34,7 @@ module Sparrowhawk
     end
 
     def specs_for_dependencies_of thing
-      thing.dependencies.map do |dep|
+      thing.runtime_dependencies.map do |dep|
         specs = vendor_cache.search(dep)
         specs.map { |s| specs_for_dependencies_of s } + specs
       end.flatten
