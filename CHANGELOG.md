@@ -1,3 +1,4 @@
-## 0.9.0 (Pre-release)
+## 0.9.0 (28 December 2010)
 
-* Initial feature set. Released for testing in production systems.
+* Initial feature set.
+
