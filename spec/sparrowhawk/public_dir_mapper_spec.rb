@@ -18,6 +18,12 @@ module Sparrowhawk
       create_file "public/javascripts/application.js", <<-JS
         $(function() { doSomeStuff(); });
       JS
+
+      create_file "public/stylesheets/structure.css", <<-CSS
+        h1 { font-weight: bold; }
+      CSS
+
+      create_file "public/sass/structure.sass", "Pretend this is sass"
     end
 
     it "maps public/index.html to entry index.html" do
@@ -28,5 +34,12 @@ module Sparrowhawk
       in_current_dir { mapper.map(&:name).should include('javascripts/application.js') }
     end
 
+    it "maps stylesheets to the root of the war" do
+      in_current_dir { mapper.map(&:name).should include('stylesheets/structure.css') }
+    end
+
+    it "excludes sass directories" do
+      in_current_dir { mapper.map(&:name).should_not include('sass/structure.sass') }
+    end
   end
 end

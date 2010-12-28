@@ -7,6 +7,7 @@ module Sparrowhawk
 
     def initialize
       @public_dir = expand_path('./public')
+      @excluded_path_patterns = [%r{.*\.sass$}]
     end
 
     private
