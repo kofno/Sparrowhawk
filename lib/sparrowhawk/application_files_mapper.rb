@@ -7,12 +7,13 @@ module Sparrowhawk
 
     def initialize
       @application_dir = expand_path '.'
+      @excluded_path_patterns = [%r{/vendor/cache/}]
     end
 
     private
 
     def file_pattern
-      application_dir + "/{app,config,lib}/**/*"
+      application_dir + "/{app,config,lib,vendor}/**/*"
     end
 
     def entry_name file_name

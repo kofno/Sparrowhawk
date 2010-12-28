@@ -16,6 +16,8 @@ module Sparrowhawk
           timeout: 5000
       DB_YAML
       create_file 'lib/bar.rb', %Q{class Bar;end}
+      create_file 'vendor/plugins/some_plugin/init.rb', "require 'me'"
+      create_file 'vendor/cache/pg-0.0.9.gem', "Pretend I'm a gem"
     end
 
     it "maps app dir files the WEB-INF in the war" do
@@ -32,6 +34,14 @@ module Sparrowhawk
 
     it "should not include directories" do
       in_current_dir { mapper.map(&:name).should_not include('WEB-INF/app/models') }
+    end
+
+    it "should include vendor directories (like plugins)" do
+      in_current_dir { mapper.map(&:name).should include('WEB-INF/vendor/plugins/some_plugin/init.rb') }
+    end
+
+    it "should not include any files from vendor/cache" do
+      in_current_dir { mapper.map(&:name).should_not include('WEB-INF/vendor/cache/pg-0.0.9.gem') }
     end
 
   end
