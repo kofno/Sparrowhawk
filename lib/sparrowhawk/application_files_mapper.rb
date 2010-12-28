@@ -13,7 +13,7 @@ module Sparrowhawk
     private
 
     def file_pattern
-      application_dir + "/{app,config,lib,vendor}/**/*"
+      application_dir + "/{app,config,lib,vendor}/**{,/*/**}/*"
     end
 
     def entry_name file_name

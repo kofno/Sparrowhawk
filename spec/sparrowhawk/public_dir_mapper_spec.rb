@@ -24,6 +24,12 @@ module Sparrowhawk
       CSS
 
       create_file "public/sass/structure.sass", "Pretend this is sass"
+
+      create_file "other_js_dir/other.js", "a symlinked js file"
+      in_current_dir do
+        FileUtils.mkdir_p "public/javascripts/ext"
+        FileUtils.ln_s File.expand_path('other_js_dir'), File.expand_path("public/javascripts/ext/other_js_dir")
+      end
     end
 
     it "maps public/index.html to entry index.html" do
@@ -40,6 +46,10 @@ module Sparrowhawk
 
     it "excludes sass directories" do
       in_current_dir { mapper.map(&:name).should_not include('sass/structure.sass') }
+    end
+
+    it "includes files from symlinked directories" do
+      in_current_dir { mapper.map(&:name).should include('javascripts/ext/other_js_dir/other.js') }
     end
   end
 end

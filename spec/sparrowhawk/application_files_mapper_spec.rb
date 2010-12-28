@@ -18,6 +18,10 @@ module Sparrowhawk
       create_file 'lib/bar.rb', %Q{class Bar;end}
       create_file 'vendor/plugins/some_plugin/init.rb', "require 'me'"
       create_file 'vendor/cache/pg-0.0.9.gem', "Pretend I'm a gem"
+      create_file 'other_plugins/a_plugin/init.rb', 'A symlinked plugin'
+      in_current_dir do
+        FileUtils.ln_s File.expand_path('other_plugins/a_plugin'), File.expand_path('vendor/plugins/a_plugin')
+      end
     end
 
     it "maps app dir files the WEB-INF in the war" do
@@ -42,6 +46,10 @@ module Sparrowhawk
 
     it "should not include any files from vendor/cache" do
       in_current_dir { mapper.map(&:name).should_not include('WEB-INF/vendor/cache/pg-0.0.9.gem') }
+    end
+
+    it "should negotiate symlinks as though they were directories" do
+      in_current_dir { mapper.map(&:name).should include('WEB-INF/vendor/plugins/a_plugin/init.rb') }
     end
 
   end
