@@ -3,10 +3,12 @@ require 'builder'
 module Sparrowhawk
 
   class WebXmlEntry
-    attr_reader :name
+    attr_reader :name, :environment
 
-    def initialize
+    def initialize options={}
       @name = 'WEB-INF/web.xml'
+      @runtimes = options[:runtimes] || (1..1)
+      @environment = options[:environment] || 'development'
     end
 
     def content
@@ -16,15 +18,24 @@ module Sparrowhawk
                    "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN",
                    "http://java.sun.com/dtd/web-app_2_3.dtd")
       xml.tag! 'web-app' do |xml|
-        xml << context_param('rails.env', 'development')
+        xml << context_param('rails.env', environment)
         xml << context_param('public.root', '/')
-        xml << context_param('jruby.max.runtimes', '1')
+        xml << context_param('jruby.min.runtimes', min_runtimes)
+        xml << context_param('jruby.max.runtimes', max_runtimes)
         xml << filter(:name  => 'RackFilter',
                       :class => 'org.jruby.rack.RackFilter',
                       :url   => '/*')
         xml << listener('org.jruby.rack.rails.RailsServletContextListener')
       end
       xml.target!
+    end
+
+    def max_runtimes
+      @runtimes.end.to_s
+    end
+
+    def min_runtimes
+      @runtimes.begin.to_s
     end
 
     private
@@ -58,6 +69,7 @@ module Sparrowhawk
       end
       xml.target!
     end
+
   end
 
 end

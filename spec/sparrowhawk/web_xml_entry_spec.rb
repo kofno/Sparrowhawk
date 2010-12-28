@@ -3,9 +3,10 @@ require 'spec_helper'
 module Sparrowhawk
 
   describe WebXmlEntry do
-    let(:entry) { WebXmlEntry.new }
 
     context 'by default' do
+      let(:entry) { WebXmlEntry.new }
+
       it "has the the entry name 'WEB-INF/web.xml'" do
         entry.name.should == 'WEB-INF/web.xml'
       end
@@ -32,6 +33,27 @@ module Sparrowhawk
         it "sets up a listener for the rails servlet context" do
           entry.content.should have_css("web-app listener listener-class:content('org.jruby.rack.rails.RailsServletContextListener')")
         end
+      end
+    end
+
+    context "configuring web.xml content" do
+      let(:entry) do
+        WebXmlEntry.new({
+          :runtimes => 1..5,
+          :environment => 'production'
+        })
+      end
+
+      it "sets the min runtimes to '1'" do
+        entry.content.should have_context_param('jruby.min.runtimes', '1')
+      end
+
+      it "sets the max runtimes to '5'" do
+        entry.content.should have_context_param('jruby.max.runtimes', '5')
+      end
+
+      it "sets the rails environment to 'production'" do
+        entry.content.should have_context_param('rails.env', 'production')
       end
     end
 

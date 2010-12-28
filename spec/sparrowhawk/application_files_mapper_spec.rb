@@ -52,5 +52,13 @@ module Sparrowhawk
       in_current_dir { mapper.map(&:name).should include('WEB-INF/vendor/plugins/a_plugin/init.rb') }
     end
 
+    context "with a custom directory list excluding plugins" do
+      let(:mapper) { ApplicationFilesMapper.new *%w(app config lib) }
+
+      it "should ignore files in the vendor directory" do
+        in_current_dir { mapper.map(&:name).should_not include('WEB-INF/vendor/plugins/some_plugin/init.rb') }
+      end
+    end
+
   end
 end
