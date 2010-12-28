@@ -1,3 +1,4 @@
 .rvm
 .bundle
 /tmp
+*.gem

@@ -1,11 +1,13 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    aruba (0.2.7)
-      background_process
+    aruba (0.2.8)
+      childprocess (~> 0.1.6)
       cucumber (~> 0.10.0)
-    background_process (1.2)
+      rspec (~> 2.3.0)
     builder (3.0.0)
+    childprocess (0.1.6)
+      ffi (~> 0.6.3)
     cucumber (0.10.0)
       builder (>= 2.1.2)
       diff-lcs (~> 1.1.2)
@@ -13,11 +15,12 @@ GEM
       json (~> 1.4.6)
       term-ansicolor (~> 1.0.5)
     diff-lcs (1.1.2)
-    gherkin (2.3.2)
+    ffi (0.6.3)
+      rake (>= 0.8.7)
+    gherkin (2.3.3)
       json (~> 1.4.6)
-      term-ansicolor (~> 1.0.5)
-    jruby-jars (1.5.2)
-    jruby-rack (1.0.3)
+    jruby-jars (1.5.6)
+    jruby-rack (1.0.4)
     json (1.4.6)
     nokogiri (1.4.4)
     rake (0.8.7)

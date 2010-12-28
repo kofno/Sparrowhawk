@@ -1,5 +1,4 @@
-require 'rubygems'
-require 'bundler/setup'
+require 'bundler'
 
 module Sparrowhawk
   VERSION = "0.9.0.pre"
