@@ -3,7 +3,7 @@ require 'spec_helper'
 module Sparrowhawk
 
   describe BundlerGemFinder do
-    let(:finder) { BundlerGemFinder.new "Gemfile.lock" }
+    let(:finder) { BundlerGemFinder.new }
 
     before do
       FileUtils.rm_rf current_dir
@@ -12,6 +12,7 @@ GEM
   remote: http://rubygems.org/
   specs:
     activerecord-jdbc-adapter (1.1.0)
+    pg (0.9.0)
     nokogiri (1.4.3.1)
     nokogiri (1.4.3.1-java)
       weakling (>= 0.0.3)
@@ -22,6 +23,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-jdbc-adapter
+  pg
   nokogiri
        LOCK
 
@@ -29,6 +31,9 @@ DEPENDENCIES
        source :gemcutter
        platform :jruby do
          gem 'activerecord-jdbc-adapter'
+       end
+       platform :ruby_18, :ruby_19 do
+         gem 'pg'
        end
        gem 'nokogiri'
        GEMFILE
@@ -56,6 +61,12 @@ DEPENDENCIES
     it "returns jruby platform gems" do
       in_current_dir do
         finder.map(&:gem_path).should include('vendor/cache/activerecord-jdbc-adapter-1.1.0.gem')
+      end
+    end
+
+    it "does not return mri specific platform gems" do
+      in_current_dir do
+        finder.map(&:gem_path).should_not include('vendor/cache/pg-0.9.0.gem')
       end
     end
   end

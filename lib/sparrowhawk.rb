@@ -23,6 +23,6 @@ module Sparrowhawk
   autoload :GemMapper               ,'sparrowhawk/gem_mapper'
 
   autoload :BundlerGemFinder        ,'sparrowhawk/bundler_gem_finder'
+  autoload :BundlerDefinition       ,'sparrowhawk/bundler_definition'
   autoload :Index                   ,'sparrowhawk/index'
-  autoload :LockfileParser          ,'sparrowhawk/lockfile_parser'
 end

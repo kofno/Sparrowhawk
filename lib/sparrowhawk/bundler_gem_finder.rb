@@ -5,8 +5,8 @@ module Sparrowhawk
 
     attr_reader :definition
 
-    def initialize lockfile
-      @lockfile = LockfileParser.new IO.read(lockfile)
+    def initialize
+      @definition = BundlerDefinition.new
     end
 
     def each
@@ -16,7 +16,7 @@ module Sparrowhawk
     private
 
     def specs
-      specs_for_dependencies_of @lockfile
+      specs_for_dependencies_of @definition
     end
 
     def gems
