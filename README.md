@@ -12,7 +12,7 @@ First, we run on any ruby (or, we will, by 1.0.0)
 
 The second reason depends on preference. Warbler is a command line tool based on rake. To use warbler, you need to load up all of rake. There are times when this can have negative ramifications.
 
-#TODO: Give examples of negative ramifications
+>TODO: Give examples of negative ramifications
 
 Sparrowhawk, on the other hand, is a library for packaging Rack applications as war files. It happens that sparrowhawk ships with a rake task, but rake isn't required to use Sparrowhawk.
 
