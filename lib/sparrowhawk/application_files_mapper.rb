@@ -8,7 +8,7 @@ module Sparrowhawk
     def initialize *application_dirs
       @application_root = expand_path '.'
       @excluded_path_patterns = [%r{/vendor/cache/}]
-      @application_dirs = application_dirs || default_application_dirs
+      @application_dirs = application_dirs.empty? ? default_application_dirs : application_dirs
     end
 
     private

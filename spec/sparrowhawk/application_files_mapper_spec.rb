@@ -22,6 +22,7 @@ module Sparrowhawk
       in_current_dir do
         FileUtils.ln_s File.expand_path('other_plugins/a_plugin'), File.expand_path('vendor/plugins/a_plugin')
       end
+      create_file "root_file", "Don't grab me"
     end
 
     it "maps app dir files the WEB-INF in the war" do
@@ -50,6 +51,10 @@ module Sparrowhawk
 
     it "should negotiate symlinks as though they were directories" do
       in_current_dir { mapper.map(&:name).should include('WEB-INF/vendor/plugins/a_plugin/init.rb') }
+    end
+
+    it "should not include files from the application root directory" do
+      in_current_dir { mapper.map(&:name).should_not include('WEB-INF/root_file') }
     end
 
     context "with a custom directory list excluding plugins" do

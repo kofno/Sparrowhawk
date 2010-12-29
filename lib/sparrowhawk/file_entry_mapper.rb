@@ -11,7 +11,7 @@ module Sparrowhawk
     end
 
     def file_entry_tuples
-      Dir.glob(file_pattern).map do |f|
+      Dir.glob(file_pattern).uniq.map do |f|
         [entry_name(f), expand_path(f)]
       end
     end

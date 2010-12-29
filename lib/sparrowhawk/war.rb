@@ -22,12 +22,17 @@ module Sparrowhawk
     end
 
     def build
+      delete if exists?
       open_war for_writing do |zip|
         entries.flatten.each do |entry|
           zip.file.open(entry.name, "w") { |f| f << entry.content }
         end
       end
       self
+    end
+
+    def delete
+      File.delete name
     end
 
     private
