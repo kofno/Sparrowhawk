@@ -4,6 +4,7 @@ module Sparrowhawk
   VERSION = "0.9.1"
 
   autoload :War                     ,'sparrowhawk/war'
+  autoload :Configuration           ,'sparrowhawk/configuration'
 
   autoload :Entry                   ,'sparrowhawk/entry'
   autoload :FileEntry               ,'sparrowhawk/file_entry'
