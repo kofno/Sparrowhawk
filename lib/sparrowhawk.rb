@@ -1,7 +1,7 @@
 require 'bundler'
 
 module Sparrowhawk
-  VERSION = "0.9.0.pre"
+  VERSION = "0.9.0"
 
   autoload :War                     ,'sparrowhawk/war'
 
