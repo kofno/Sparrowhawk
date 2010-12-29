@@ -33,8 +33,8 @@ module Sparrowhawk
       end
     end
 
-    def specs_for_dependencies_of thing
-      thing.runtime_dependencies.map do |dep|
+    def specs_for_dependencies_of def_or_dep
+      def_or_dep.runtime_dependencies.map do |dep|
         specs = vendor_cache.search(dep)
         specs.map { |s| specs_for_dependencies_of s } + specs
       end.flatten

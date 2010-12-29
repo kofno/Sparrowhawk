@@ -35,6 +35,8 @@ DEPENDENCIES
        platform :ruby_18, :ruby_19 do
          gem 'pg'
        end
+       gem 'logging', :group => :production
+       gem 'rspec', :groups => [:test, :development]
        gem 'nokogiri'
        GEMFILE
 
@@ -67,6 +69,18 @@ DEPENDENCIES
     it "does not return mri specific platform gems" do
       in_current_dir do
         finder.map(&:gem_path).should_not include('vendor/cache/pg-0.9.0.gem')
+      end
+    end
+
+    it "returns gems from the :production group" do
+      in_current_dir do
+        finder.map(&:gem_path).should include('vendor/cache/logging-1.4.3.gem')
+      end
+    end
+
+    it "exludes gems that aren't part of the :production or :default groups" do
+      in_current_dir do
+        finder.map(&:gem_path).should_not include('vendor/cache/rspec-2.2.0.gem')
       end
     end
   end

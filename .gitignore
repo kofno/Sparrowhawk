@@ -1,4 +1,4 @@
 .rvm
 .bundle
 /tmp
-*.gem
+sparrowhawk*.gem
