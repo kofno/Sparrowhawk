@@ -2,3 +2,4 @@
 .bundle
 /tmp
 sparrowhawk*.gem
+/.rvmrc
