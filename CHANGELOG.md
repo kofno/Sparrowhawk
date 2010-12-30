@@ -1,3 +1,9 @@
+## 0.9.3 (29 December 2010)
+
+* Bugs
+
+  * GEM_HOME is not always set by bundler. (https://www.pivotaltracker.com/story/show/8028577)
+
 ## 0.9.2 (29 December 2010)
 
 * Features
