@@ -45,7 +45,7 @@ module Sparrowhawk
     end
 
     def cached_bundler_gem_path
-      File.join ENV['GEM_HOME'], "cache", "bundler-#{::Bundler::VERSION}.gem"
+      File.join ENV['GEM_HOME'] || ::Bundler.bundle_path.to_s, "cache", "bundler-#{::Bundler::VERSION}.gem"
     end
 
     def gem_from_file_by_path path

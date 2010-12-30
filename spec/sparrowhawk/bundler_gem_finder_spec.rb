@@ -54,6 +54,23 @@ DEPENDENCIES
       end
     end
 
+    context "when gem home is not set" do
+      before do
+        @old_gem_home = ENV['GEM_HOME']
+        ENV['GEM_HOME'] = nil
+      end
+
+      after do
+        ENV['GEM_HOME'] = @old_gem_home
+      end
+
+      it "returns bundler gem from the bundle path, if gem home is not set" do
+        in_current_dir do
+          finder.map(&:gem_path).should include(Bundler.bundle_path.to_s + "/cache/bundler-1.0.7.gem")
+        end
+      end
+    end
+
     it "returns only runtime dependencies" do
       in_current_dir do
         finder.map(&:gem_path).should_not include('vendor/cache/hoe-2.8.0.gem')
