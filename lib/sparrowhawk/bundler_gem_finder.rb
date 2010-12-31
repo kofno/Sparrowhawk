@@ -5,8 +5,8 @@ module Sparrowhawk
 
     attr_reader :definition
 
-    def initialize
-      @definition = BundlerDefinition.new
+    def initialize definition
+      @definition = definition 
     end
 
     def each

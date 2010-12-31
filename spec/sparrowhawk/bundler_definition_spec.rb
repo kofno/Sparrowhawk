@@ -3,7 +3,7 @@ require 'spec_helper'
 module Sparrowhawk
 
   describe BundlerDefinition, "which only cares about JRuby runtimes" do
-    let(:definition) { BundlerDefinition.new }
+    let(:definition) { BundlerDefinition.new 'Gemfile', 'Gemfile.lock' }
 
     before do
       FileUtils.rm_rf current_dir
@@ -21,7 +21,7 @@ GEM
 PLATFORMS
   java
   ruby
-
+__
 DEPENDENCIES
   activerecord-jdbc-adapter
   pg
@@ -37,6 +37,8 @@ DEPENDENCIES
          gem 'pg'
        end
        gem 'nokogiri'
+       gem 'wirble', :groups => :cli
+       gem 'cucumber', :groups => [:uat, :test]
        GEMFILE
     end
 
@@ -58,5 +60,10 @@ DEPENDENCIES
       end
     end
 
+    it "should exclude gem groups other then :default and :production" do
+      in_current_dir do
+        definition.excluded_groups.should == [:cli, :uat, :test]
+      end
+    end
   end
 end

@@ -44,3 +44,9 @@ RSpec::Matchers.define :have_filter do |options|
     xml.xpath("/web-app/filter-mapping/filter-name[text()='#{options[:name]}']/../url-pattern[text()='#{options[:url]}']").size > 0
   end
 end
+
+RSpec::Matchers.define :include_match do |regexp|
+  match do |enum|
+    enum.any? { |value| regexp =~ value }
+  end
+end

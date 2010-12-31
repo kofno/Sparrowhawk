@@ -3,7 +3,10 @@ require 'spec_helper'
 module Sparrowhawk
 
   describe BundlerGemFinder do
-    let(:finder) { BundlerGemFinder.new }
+    let(:finder) do
+      definition = BundlerDefinition.new 'Gemfile', 'Gemfile.lock'
+      BundlerGemFinder.new definition
+    end
 
     before do
       FileUtils.rm_rf current_dir
