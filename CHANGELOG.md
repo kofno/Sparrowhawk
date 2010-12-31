@@ -1,3 +1,13 @@
+## 0.9.4 (31 December 2010)
+
+* Features
+
+  * Include a bundler config in the war to make sure only the correct gems are loaded by bundler (https://www.pivotaltracker.com/story/show/8048525)
+
+* Bugs
+
+  * Make sure the correct version of Bundler is available (https://www.pivotaltracker.com/story/show/8034021)
+
 ## 0.9.3 (29 December 2010)
 
 * Bugs
