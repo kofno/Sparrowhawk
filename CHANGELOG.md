@@ -1,3 +1,9 @@
+## 0.9.5 (31 December 2010)
+
+* Bugs
+
+  * Accidently removed jruby rack from all wars. (https://www.pivotaltracker.com/story/show/8065983)
+
 ## 0.9.4 (31 December 2010)
 
 * Features
