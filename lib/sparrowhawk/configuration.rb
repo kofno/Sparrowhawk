@@ -29,6 +29,7 @@ module Sparrowhawk
       war.entries << ApplicationFilesMapper.new(application_dirs).to_a
       war.entries << JRubyCoreJarEntry.new
       war.entries << JRubyStdLibJarEntry.new
+      war.entries << JRubyRackJarEntry.new
       war.entries << BundlerArtifactMapper.new.to_a
       other_files.each do |file|
         war.entries << FileEntry.new("WEB-INF/#{file}", file)

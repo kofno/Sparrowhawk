@@ -46,6 +46,7 @@ Feature: Rake task
      Then the output should contain "inflating: index.html"
       And the output should contain "inflating: WEB-INF/web.xml"
       And the output should contain "inflating: META-INF/MANIFEST.MF"
+      And the output should contain "inflating: WEB-INF/lib/jruby-rack-1.0.4.jar"
 
   Scenario: Renaming the task
     Given a file named "Rakefile" with:
