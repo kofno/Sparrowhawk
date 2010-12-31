@@ -2,6 +2,12 @@
 
 'The Warbler Killer' is kind of tongue-in-cheek. Sparrowhawk is for teams that would like to distribute their application as a WAR file, but prefer that their distribution tool chain remain purely MRI. That's not to say that Sparrowhawk won't run on JRuby, just that the goal was to produce a tool that would run on any ruby.
 
+Documentation is a little sparse at the moement. The test rake_task.feature demonstrates using the rake task. You can review the source and report issues at Github:
+* [Source](https://github.com/kofno/Sparrowhawk)
+* [Bug Tracker](https://github.com/kofno/Sparrowhawk/issues)
+
+You can also follow our progress on [Pivotal Tracker](https://www.pivotaltracker.com/projects/164959#)
+
 ## Why Sparrowhawk?
 
 Why would you pick Sparrowhawk over another tool, like, ohhhhh I don't know... Warbler?
