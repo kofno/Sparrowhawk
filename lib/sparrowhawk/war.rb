@@ -4,7 +4,8 @@ module Sparrowhawk
 
   class War
 
-    attr_reader :name, :entries
+    attr_reader :name
+    attr_accessor :entries
 
     def initialize file_name=nil
       @name = file_name || default_file_name

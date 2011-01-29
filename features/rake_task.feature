@@ -42,11 +42,11 @@ Feature: Rake task
      When I run "rake"
      Then the exit status should be 0
       And a file named "aruba.war" should exist
-     When I run "unzip aruba.war"
-     Then the output should contain "inflating: index.html"
-      And the output should contain "inflating: WEB-INF/web.xml"
-      And the output should contain "inflating: META-INF/MANIFEST.MF"
-      And the output should contain "inflating: WEB-INF/lib/jruby-rack-1.0.4.jar"
+     When I run "unzip -Z aruba.war"
+     Then the output should contain "index.html"
+      And the output should contain "WEB-INF/web.xml"
+      And the output should contain "META-INF/MANIFEST.MF"
+      And the output should contain "WEB-INF/lib/jruby-rack-1.0.4.jar"
 
   Scenario: Renaming the task
     Given a file named "Rakefile" with:
@@ -79,5 +79,47 @@ Feature: Rake task
      When I run "rake"
      Then the exit status should be 0
       And a file named "example.war" should exist
-     When I run "unzip example.war"
-     Then the output should contain "inflating: WEB-INF/Rakefile"
+     When I run "unzip -Z example.war"
+     Then the output should contain "WEB-INF/Rakefile"
+
+  Scenario: Run the task from a subdirectory
+    Given a file named "Rakefile" with:
+       """
+       $LOAD_PATH.unshift File.dirname(__FILE__) + '/../../lib'
+       require 'sparrowhawk/rake_task'
+
+       Sparrowhawk::RakeTask.new
+
+       task :default => :war
+       """
+     When I cd to "public"
+      And I run "rake"
+     Then the exit status should be 0
+      And a file named "../aruba.war" should exist
+     When I run "unzip -Z ../aruba.war"
+     Then the output should contain "index.html"
+      And the output should contain "WEB-INF/web.xml"
+      And the output should contain "META-INF/MANIFEST.MF"
+      And the output should contain "WEB-INF/lib/jruby-rack-1.0.4.jar"
+
+  Scenario: A generic rack application
+    Given a file named "config.ru" with:
+       """
+       require "rubygems"
+       require "bundler"
+       Bundle.require
+
+       run 'MyApplication'
+       """
+      And a file named "Rakefile" with:
+       """
+       $LOAD_PATH.unshift File.dirname(__FILE__) + '/../../lib'
+       require 'sparrowhawk/rake_task'
+
+       Sparrowhawk::RakeTask.new
+
+       task :default => :war
+       """
+     When I run "rake"
+     Then the exit status should be 0
+      And a file named "aruba.war" should exist

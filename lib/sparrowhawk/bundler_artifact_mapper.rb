@@ -16,14 +16,15 @@ module Sparrowhawk
     private
 
     def entries
-      entries = []
-      entries << GemfileEntry.new
-      entries << LockfileEntry.new
-      entries << gems
+      return @entries if @entries
+      @entries = []
+      @entries << GemfileEntry.new
+      @entries << LockfileEntry.new
+      @entries << gems
       unless groups.empty?
-        entries << bundler_configuration
+        @entries << bundler_configuration
       end
-      entries.flatten
+      @entries.flatten
     end
 
     def gems
