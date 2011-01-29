@@ -33,7 +33,7 @@ module Sparrowhawk
       war.entries << jruby_core_jar_entry
       war.entries << jruby_std_jar_entry
       war.entries << jruby_rack_jar_entry
-      war.entries += gem_entities
+      war.entries += gem_entries
       other_files.each do |file|
         war.entries << file_entry("WEB-INF/#{file}", file)
       end if other_files
@@ -76,8 +76,8 @@ module Sparrowhawk
       @jruby_rack_jar_entry ||= JRubyRackJarEntry.new
     end
 
-    def gem_entities
-      @gem_entities ||= BundlerArtifactMapper.new.to_a
+    def gem_entries
+      @gem_entries ||= BundlerArtifactMapper.new.to_a
     end
 
     def file_entry entry_name, path

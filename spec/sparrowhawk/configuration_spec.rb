@@ -74,9 +74,9 @@ module Sparrowhawk
       end
     end
 
-    it "includes gem entities" do
+    it "includes gem entries" do
       in_current_dir do
-        config.should_receive(:gem_entities).and_return([])
+        config.should_receive(:gem_entries).and_return([])
         config.war
       end
     end
