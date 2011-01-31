@@ -11,10 +11,27 @@ module Sparrowhawk
     def pseudo_classes
       @pseudo_classes ||= PseudoClasses.new
     end
+
+    def xmllint?
+      system "which xmllint"
+    end
   end
 end
 
-
+class String
+  if Sparrowhawk.xmllint?
+    def valid_xml?
+      # a bit chatty
+      IO.popen('xmllint --valid -', 'w') { |f| f.puts self }
+      $?.success?
+    end
+  else
+    def valid_xml?
+      $stderr.puts "xmllint is missing: skipping validation checks"
+      true
+    end
+  end
+end
 
 RSpec::Matchers.define :have_css do |pattern|
   match do |xml|

@@ -2,22 +2,22 @@ module Sparrowhawk
 
   class Configuration
 
-    #Sets the name/file path of the war file. Ex: ../distro/example.war
+    # Sets the name/file path of the war file. Ex: ../distro/example.war
     attr_accessor :war_file
 
-    #Sets the base directories that will be scanned for application
-    #files (not static content). Some directories will always be
-    #excluded implicitly (e.g. vendor/cache)
+    # Sets the base directories that will be scanned for application
+    # files (not static content). Some directories will always be
+    # excluded implicitly (e.g. vendor/cache)
     attr_accessor :application_dirs
 
-    #The min and max runtimes that will be used to service
-    #requests. Accepts a range.
+    # The min and max runtimes that will be used to service
+    # rails requests. Accepts a range. Only applies to rails
     attr_accessor :runtimes
 
-    #Which environment to use when running the application -- only applies to rails
+    # Which environment to use when running the application. Only applies to rails.
     attr_accessor :environment
 
-    #Other files to include in the application code (LICENSE, README, etc.)
+    # Other files to include in the application code (LICENSE, README, etc.)
     attr_accessor :other_files
 
     # Set the rack config file. Defaults to 'config.ru'
