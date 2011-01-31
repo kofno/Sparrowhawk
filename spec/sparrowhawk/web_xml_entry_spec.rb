@@ -33,6 +33,10 @@ module Sparrowhawk
         it "sets up a listener for the rails servlet context" do
           entry.content.should have_css("web-app listener listener-class:content('org.jruby.rack.rails.RailsServletContextListener')")
         end
+
+        it "should be valid" do
+          entry.content.should be_valid_xml
+        end
       end
     end
 
@@ -54,6 +58,10 @@ module Sparrowhawk
 
       it "sets the rails environment to 'production'" do
         entry.content.should have_context_param('rails.env', 'production')
+      end
+
+      it "should remain valid" do
+        entry.content.should be_valid_xml
       end
     end
 
