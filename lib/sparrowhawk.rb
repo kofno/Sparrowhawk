@@ -9,6 +9,7 @@ module Sparrowhawk
   autoload :Entry                      , 'sparrowhawk/entry'
   autoload :FileEntry                  , 'sparrowhawk/file_entry'
   autoload :WebXmlEntry                , 'sparrowhawk/web_xml_entry'
+  autoload :RailsWebXmlEntry           , 'sparrowhawk/rails_web_xml_entry'
   autoload :RackWebXmlEntry            , 'sparrowhawk/rack_web_xml_entry'
   autoload :ManifestEntry              , 'sparrowhawk/manifest_entry'
   autoload :JarEntry                   , 'sparrowhawk/jar_entry'

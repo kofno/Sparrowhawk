@@ -31,6 +31,11 @@ class String
       true
     end
   end
+
+  def context_param_value param_name
+    document = Nokogiri::XML(self)
+    document.xpath("/web-app/context-param/param-name[text()='#{param_name}']/../param-value")
+  end
 end
 
 RSpec::Matchers.define :have_css do |pattern|

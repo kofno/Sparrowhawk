@@ -1,44 +1,28 @@
 require 'builder'
 
 module Sparrowhawk
-
   class WebXmlEntry
-    attr_reader :name, :environment
+    attr_reader :name
 
-    def initialize options={}
-      @name = 'WEB-INF/web.xml'
-      @runtimes = options[:runtimes] || (1..1)
-      @environment = options[:environment] || 'development'
+    def initialize *args
+      @name = "WEB-INF/web.xml"
     end
 
     def content
-      xml = Builder::XmlMarkup.new
-      xml.instruct!
-      xml.declare!(:DOCTYPE, 'web-app'.to_sym, :PUBLIC,
-                   "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN",
-                   "http://java.sun.com/dtd/web-app_2_3.dtd")
-      xml.tag! 'web-app' do |xml|
-        xml << context_param('rails.env', environment)
-        xml << context_param('public.root', '/')
-        xml << context_param('jruby.min.runtimes', min_runtimes)
-        xml << context_param('jruby.max.runtimes', max_runtimes)
-        xml << filter(:name  => 'RackFilter',
-                      :class => 'org.jruby.rack.RackFilter',
-                      :url   => '/*')
-        xml << listener('org.jruby.rack.rails.RailsServletContextListener')
-      end
-      xml.target!
-    end
-
-    def max_runtimes
-      @runtimes.end.to_s
-    end
-
-    def min_runtimes
-      @runtimes.begin.to_s
+      raise NotImplementedError, "#content should be implemented in a subclass"
     end
 
     private
+
+    def web_app
+      xml = Builder::XmlMarkup.new
+      xml.instruct!
+      xml << doctype_declaration
+      xml.tag! 'web-app' do |xml|
+        yield xml if block_given?
+      end
+      xml
+    end
 
     def context_param name, value
       xml = Builder::XmlMarkup.new
@@ -70,6 +54,22 @@ module Sparrowhawk
       xml.target!
     end
 
-  end
+    def public_root
+      context_param('public.root', '/')
+    end
 
+    def doctype_declaration
+      xml = Builder::XmlMarkup.new
+      xml.declare!(:DOCTYPE, 'web-app'.to_sym, :PUBLIC,
+                   "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN",
+                   "http://java.sun.com/dtd/web-app_2_3.dtd")
+      xml.target!
+    end
+
+    def rack_filter
+      filter(:name  => 'RackFilter',
+             :class => 'org.jruby.rack.RackFilter',
+             :url   => '/*')
+    end
+  end
 end

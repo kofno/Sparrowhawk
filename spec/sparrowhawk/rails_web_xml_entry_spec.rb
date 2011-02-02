@@ -2,10 +2,10 @@ require 'spec_helper'
 
 module Sparrowhawk
 
-  describe WebXmlEntry do
+  describe RailsWebXmlEntry do
 
     context 'by default' do
-      let(:entry) { WebXmlEntry.new }
+      let(:entry) { RailsWebXmlEntry.new }
 
       it "has the the entry name 'WEB-INF/web.xml'" do
         entry.name.should == 'WEB-INF/web.xml'
@@ -42,7 +42,7 @@ module Sparrowhawk
 
     context "configuring web.xml content" do
       let(:entry) do
-        WebXmlEntry.new({
+        RailsWebXmlEntry.new({
           :runtimes => 1..5,
           :environment => 'production'
         })

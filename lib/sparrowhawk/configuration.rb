@@ -86,11 +86,11 @@ module Sparrowhawk
 
     def web_xml_entry
       @web_xml_entry ||= (rack_app? ? 
-        RackWebXmlEntry.new(web_xml_options) :
-        WebXmlEntry.new(web_xml_options))
+        RackWebXmlEntry.new(:rackup => rack_config) :
+        RailsWebXmlEntry.new(rails_web_xml_options))
     end
 
-    def web_xml_options
+    def rails_web_xml_options
       options = {}
       options[:runtimes] = runtimes if runtimes
       options[:environment] = environment if environment

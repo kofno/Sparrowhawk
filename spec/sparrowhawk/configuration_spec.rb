@@ -20,7 +20,7 @@ module Sparrowhawk
     
     it "includes the default (rails) web.xml" do
       in_current_dir do
-        config.war.entries.any? { |entry| entry.class.name == 'Sparrowhawk::WebXmlEntry' }.should be_true
+        config.war.entries.any? { |entry| entry.class.name == 'Sparrowhawk::RailsWebXmlEntry' }.should be_true
       end
     end
 
