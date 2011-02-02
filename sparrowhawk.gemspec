@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'rubyzip'
   s.add_dependency 'jruby-jars'
   s.add_dependency 'jruby-rack'
+  s.add_dependency 'builder'
 
   s.add_development_dependency 'rake'
   s.add_development_dependency 'rspec'

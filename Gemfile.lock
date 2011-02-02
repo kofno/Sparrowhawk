@@ -48,6 +48,7 @@ PLATFORMS
 
 DEPENDENCIES
   aruba
+  builder
   cucumber
   jruby-jars
   jruby-rack

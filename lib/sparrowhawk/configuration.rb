@@ -42,12 +42,11 @@ module Sparrowhawk
 
     def initialize
       @rack_config = default_rack_config
-
       yield self if block_given?
     end
 
     def rack_app?
-      File.file? rack_config
+      File.file? File.expand_path(rack_config)
     end
 
     private
@@ -61,7 +60,7 @@ module Sparrowhawk
     end
 
     def application_file_entries
-      @application_file_entries ||= ApplicationFilesMapper.new.to_a
+      @application_file_entries ||= ApplicationFilesMapper.new(application_dirs).to_a
     end
 
     def jruby_core_jar_entry
@@ -98,7 +97,7 @@ module Sparrowhawk
     end
 
     def default_rack_config
-      'config.ru'
+      './config.ru'
     end
   end
 
