@@ -13,37 +13,37 @@ You can also follow our progress on [Pivotal Tracker](https://www.pivotaltracker
 
 Sparrowhawk is distributed as a gem:
 
-> $ gem install sparrowhawk
+    $ gem install sparrowhawk
 
 Or add Sparrowhawk to your Gemfile:
 
-> \# Gemfile
-> gem "sparrowhawk"
->
-> \#CLI
-> $ bundle install --local
+    # Gemfile
+    gem "sparrowhawk"
+
+    #CLI
+    $ bundle install --local
 
 ## Usage
 
 ### Rake Task
 Sparrowhawk ships with a rake task.
 
-> require 'sparrowhawk/rake_task'
->
-> Sparrowhawk::RakeTask.new
+    require 'sparrowhawk/rake_task'
+
+    Sparrowhawk::RakeTask.new
 
 This will create a task named 'war' in your project. If you don't like that name, you can change it:
 
-> Sparrowhawk::RakeTask.new :package
+    Sparrowhawk::RakeTask.new :package
 
 Now you'll have a task named 'package' instead.
 
 Sparrowhawk will try to do the right thing, but it sometimes will need a little coaxing.
 
-> Sparrowhawk::RakeTask.new do |t|
->   t.other_files = FileList['README', 'LICENSE', 'CHANGELOG']
->   t.runtimes = 1..5
-> end
+    Sparrowhawk::RakeTask.new do |t|
+      t.other_files = FileList['README', 'LICENSE', 'CHANGELOG']
+      t.runtimes = 1..5
+    end
 
 This configuration adds three additional files to the war, and sets the minimum number of runtimes to one, and the maiximum to five.
 
@@ -53,28 +53,28 @@ There are only a few configuration options. They are documented [here]()
 
 The rake example above could have been written this way:
 
-> require 'sparrowhawk'
-> 
-> task :war do
->   Sparrowhawk::Configuration.new do |c|
->     c.other_files = FileList['README', 'LICENSE', 'CHANGELOG']
->     c.runtimes = 1..5
->   end.war.build
-> end
+    require 'sparrowhawk'
+    
+    task :war do
+      Sparrowhawk::Configuration.new do |c|
+        c.other_files = FileList['README', 'LICENSE', 'CHANGELOG']
+        c.runtimes = 1..5
+      end.war.build
+    end
 
 This produces the exact same outcome. So why bother? The nice thing about the Configuration class is that it is fairly extensible. If, for example, you were using Sparrowhawk, but didn't want to use bundler to manage you gem files. In that case, you might extend the Configuration class and write youe own implementation of the #gem_entities method.
 
-> class MyWarConfig < Sparrowhawk::Configuration
-> 
->   def gem_entries
->     # my impl
->     ...
->   end
-> end
->
-> task :war do
->   MyWarConfig.new.war.build
-> end
+    class MyWarConfig < Sparrowhawk::Configuration
+     
+      def gem_entries
+        # my impl
+        ...
+      end
+    end
+    
+    task :war do
+      MyWarConfig.new.war.build
+    end
 
 ## Why Sparrowhawk?
 
