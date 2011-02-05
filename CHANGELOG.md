@@ -1,3 +1,9 @@
+## 0.9.6 (5 February 2011)
+
+* Features
+
+    * Rack support
+
 ## 0.9.5 (31 December 2010)
 
 * Bugs
