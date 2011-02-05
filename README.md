@@ -6,6 +6,7 @@ Documentation is a little sparse at the moment. The test rake_task.feature demon
 
 * [Source](https://github.com/kofno/Sparrowhawk)
 * [Bug Tracker](https://github.com/kofno/Sparrowhawk/issues)
+* [RDoc](http://rubydoc.info/github/kofno/Sparrowhawk/master/frames)
 
 You can also follow our progress on [Pivotal Tracker](https://www.pivotaltracker.com/projects/164959#)
 
