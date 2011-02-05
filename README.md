@@ -9,24 +9,95 @@ Documentation is a little sparse at the moment. The test rake_task.feature demon
 
 You can also follow our progress on [Pivotal Tracker](https://www.pivotaltracker.com/projects/164959#)
 
+## Install
+
+Sparrowhawk is distributed as a gem:
+
+> $ gem install sparrowhawk
+
+Or add Sparrowhawk to your Gemfile:
+
+> \# Gemfile
+> gem "sparrowhawk"
+>
+> \#CLI
+> $ bundle install --local
+
+## Usage
+
+### Rake Task
+Sparrowhawk ships with a rake task.
+
+> require 'sparrowhawk/rake_task'
+>
+> Sparrowhawk::RakeTask.new
+
+This will create a task named 'war' in your project. If you don't like that name, you can change it:
+
+> Sparrowhawk::RakeTask.new :package
+
+Now you'll have a task named 'package' instead.
+
+Sparrowhawk will try to do the right thing, but it sometimes will need a little coaxing.
+
+> Sparrowhawk::RakeTask.new do |t|
+>   t.other_files = FileList['README', 'LICENSE', 'CHANGELOG']
+>   t.runtimes = 1..5
+> end
+
+This configuration adds three additional files to the war, and sets the minimum number of runtimes to one, and the maiximum to five.
+
+There are only a few configuration options. They are documented [here]()
+
+### Programmatic
+
+The rake example above could have been written this way:
+
+> require 'sparrowhawk'
+> 
+> task :war do
+>   Sparrowhawk::Configuration.new do |c|
+>     c.other_files = FileList['README', 'LICENSE', 'CHANGELOG']
+>     c.runtimes = 1..5
+>   end.war.build
+> end
+
+This produces the exact same outcome. So why bother? The nice thing about the Configuration class is that it is fairly extensible. If, for example, you were using Sparrowhawk, but didn't want to use bundler to manage you gem files. In that case, you might extend the Configuration class and write youe own implementation of the #gem_entities method.
+
+> class MyWarConfig < Sparrowhawk::Configuration
+> 
+>   def gem_entries
+>     # my impl
+>     ...
+>   end
+> end
+>
+> task :war do
+>   MyWarConfig.new.war.build
+> end
+
 ## Why Sparrowhawk?
 
-Why would you pick Sparrowhawk over another tool, like, ohhhhh I don't know... Warbler?
+So, why did I build Sparrowhawk?
 
-I can think of two reasons.
+1. I needed to a reliable way to build a war file on MRI. This means:
+ - Handling symlinks correctly on MRI
+ - Packaging for the JRuby platform, even from MRI
+2. I wanted a simple, programatic way to build war files.
+ - No extra config files
+ - Minimal configuration
+3. Whenever I would update Warbler, something would break
 
-First, we run on any ruby (or, we will, by 1.0.0)
-
-The second reason depends on preference. Warbler is a command line tool based on rake. To use warbler, you need to load up all of rake. There are times when this can have negative ramifications.
-
->TODO: Give examples of negative ramifications
-
-Sparrowhawk, on the other hand, is a library for packaging Rack applications as war files. It happens that Sparrowhawk ships with a rake task, but rake isn't required to use Sparrowhawk.
+That being said, Warbler is a fine tool, and if your needa aren't similar to mine, there's probably not a good reason to switch.
 
 ## Notes and Warnings
 
-Sparrowhawk was built to package TriSano.
+So far, I've packaged and deployed a large rails (2.3.x) app and a small sinatra app. Rack support is very new, but I would expect to be able to package most rails or rack based applications, provided they are compatible on JRuby. However, the current sample size is small.
 
-Sparrowhawk only does rails applications so far. Rack support is forth coming (in fact, the first pass was just pushed to master).
+Sparrowhawk requires bundler!
 
-I've only tested Sparrowhawk on Rails 2.3.x applications w/ bundler integration (a niche group, to be certain). It does, however, work beautifully on one such application (TriSano).
+For Sparrowhawk to work from MRI, you must package your bundle, and you must bundle install --local from JRuby at least once. This is so bundler can find the java versions of your gems.
+
+## Word!
+
+If you're using Sparrowhawk, drop me a line. I'd love to hear about it!
