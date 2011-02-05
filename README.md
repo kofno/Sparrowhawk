@@ -82,11 +82,11 @@ This produces the exact same outcome. So why bother? The nice thing about the Co
 So, why did I build Sparrowhawk?
 
 1. I needed to a reliable way to build a war file on MRI. This means:
- - Handling symlinks correctly on MRI
- - Packaging for the JRuby platform, even from MRI
+    - Handling symlinks correctly on MRI
+    - Packaging for the JRuby platform, even from MRI
 2. I wanted a simple, programatic way to build war files.
- - No extra config files
- - Minimal configuration
+    - No extra config files
+    - Minimal configuration
 3. Whenever I would update Warbler, something would break
 
 That being said, Warbler is a fine tool, and if your needa aren't similar to mine, there's probably not a good reason to switch.
