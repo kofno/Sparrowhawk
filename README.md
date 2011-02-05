@@ -47,7 +47,7 @@ Sparrowhawk will try to do the right thing, but it sometimes will need a little 
 
 This configuration adds three additional files to the war, and sets the minimum number of runtimes to one, and the maiximum to five.
 
-There are only a few configuration options. They are documented [here]()
+There are only a few configuration options. They are documented [here](http://rubydoc.info/github/kofno/Sparrowhawk/master/Sparrowhawk/Configuration)
 
 ### Programmatic
 
