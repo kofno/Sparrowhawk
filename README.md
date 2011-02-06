@@ -99,6 +99,10 @@ Sparrowhawk requires bundler!
 
 For Sparrowhawk to work from MRI, you must package your bundle, and you must bundle install --local from JRuby at least once. This is so bundler can find the java versions of your gems.
 
+Ruby Implementations (implementations that I have run Sparrowhawk with):
+- REE
+- JRuby 1.5.6
+
 ## Word!
 
 If you're using Sparrowhawk, drop me a line. I'd love to hear about it!
