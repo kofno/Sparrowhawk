@@ -88,6 +88,7 @@ So, why did I build Sparrowhawk?
     - No extra config files
     - Minimal configuration
 3. Whenever I would update Warbler, something would break
+4. Including Warbler in a development group was causing [this](https://github.com/jimweirich/rake/issues#issue/7) issue w/ rake to break our app in development mode
 
 That being said, Warbler is a fine tool, and if your needa aren't similar to mine, there's probably not a good reason to switch.
 
