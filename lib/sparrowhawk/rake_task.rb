@@ -3,7 +3,6 @@ require 'rake/tasklib'
 module Sparrowhawk
 
   class RakeTask < ::Rake::TaskLib
-
     def initialize task_name=:war, &block
       @configuration = Configuration.new &block
 
