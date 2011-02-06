@@ -29,7 +29,7 @@ module Sparrowhawk
     
     it "includes bundled gems" do
       in_current_dir do
-        mapper.map(&:name).should include_match(%r{WEB-INF/gems/specifications/bundler-\d\.\d\.\d\.gemspec})
+        mapper.map(&:name).should include_match(%r{WEB-INF/gems/specifications/bundler-\d+\.\d+\.\d+\.gemspec})
       end
     end
 

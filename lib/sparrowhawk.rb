@@ -29,4 +29,6 @@ module Sparrowhawk
   autoload :BundlerGemFinder           , 'sparrowhawk/bundler_gem_finder'
   autoload :BundlerDefinition          , 'sparrowhawk/bundler_definition'
   autoload :Index                      , 'sparrowhawk/index'
+
+  autoload :RakeTask                   , 'sparrowhawk/rake_task'
 end

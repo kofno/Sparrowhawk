@@ -33,7 +33,7 @@ Feature: Rake task
     Given a file named "Rakefile" with:
        """
        $LOAD_PATH.unshift File.dirname(__FILE__) + '/../../lib'
-       require 'sparrowhawk/rake_task'
+       require 'sparrowhawk'
 
        Sparrowhawk::RakeTask.new
 
@@ -52,7 +52,7 @@ Feature: Rake task
     Given a file named "Rakefile" with:
        """
        $LOAD_PATH.unshift File.dirname(__FILE__) + '/../../lib'
-       require 'sparrowhawk/rake_task'
+       require 'sparrowhawk'
 
        Sparrowhawk::RakeTask.new :package
 
@@ -66,7 +66,7 @@ Feature: Rake task
     Given a file named "Rakefile" with:
        """
        $LOAD_PATH.unshift File.dirname(__FILE__) + '/../../lib'
-       require 'sparrowhawk/rake_task'
+       require 'sparrowhawk'
 
        Sparrowhawk::RakeTask.new do |task|
          task.war_file = 'example.war'
@@ -86,7 +86,7 @@ Feature: Rake task
     Given a file named "Rakefile" with:
        """
        $LOAD_PATH.unshift File.dirname(__FILE__) + '/../../lib'
-       require 'sparrowhawk/rake_task'
+       require 'sparrowhawk'
 
        Sparrowhawk::RakeTask.new
 
@@ -114,7 +114,7 @@ Feature: Rake task
       And a file named "Rakefile" with:
        """
        $LOAD_PATH.unshift File.dirname(__FILE__) + '/../../lib'
-       require 'sparrowhawk/rake_task'
+       require 'sparrowhawk'
 
        Sparrowhawk::RakeTask.new
 

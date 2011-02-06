@@ -51,7 +51,7 @@ DEPENDENCIES
 
     it "returns default gems from vendor cache that are appropriate for the java platform" do
       in_current_dir do
-        finder.map(&:gem_path).should include(ENV['GEM_HOME'] + "/cache/bundler-1.0.7.gem")
+        finder.map(&:gem_path).should include(ENV['GEM_HOME'] + "/cache/bundler-1.0.10.gem")
         finder.map(&:gem_path).should include('vendor/cache/weakling-0.0.4-java.gem')
         finder.map(&:gem_path).should include('vendor/cache/nokogiri-1.4.3.1-java.gem')
       end
@@ -69,7 +69,7 @@ DEPENDENCIES
 
       it "returns bundler gem from the bundle path, if gem home is not set" do
         in_current_dir do
-          finder.map(&:gem_path).should include(Bundler.bundle_path.to_s + "/cache/bundler-1.0.7.gem")
+          finder.map(&:gem_path).should include(Bundler.bundle_path.to_s + "/cache/bundler-1.0.10.gem")
         end
       end
     end

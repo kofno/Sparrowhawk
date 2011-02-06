@@ -1,5 +1,4 @@
 require 'rake/tasklib'
-require 'sparrowhawk'
 
 module Sparrowhawk
 

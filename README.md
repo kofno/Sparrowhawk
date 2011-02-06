@@ -29,7 +29,7 @@ Or add Sparrowhawk to your Gemfile:
 ### Rake Task
 Sparrowhawk ships with a rake task.
 
-    require 'sparrowhawk/rake_task'
+    require 'sparrowhawk'
 
     Sparrowhawk::RakeTask.new
 
