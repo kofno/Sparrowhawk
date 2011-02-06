@@ -21,7 +21,7 @@ module Sparrowhawk
           require 'list'
           run Sinatra::Application
         RACKUP
-        create_file 'config.ru', @rackup
+        write_file 'config.ru', @rackup
       end
 
       it "should store the rackup file in the rackup context param" do

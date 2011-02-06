@@ -8,7 +8,7 @@ module Sparrowhawk
     before do
       FileUtils.rm_rf current_dir
 
-      create_file "public/sample.txt", "Have a nice day!"
+      write_file "public/sample.txt", "Have a nice day!"
     end
 
     it "gets its content from the specified source file" do

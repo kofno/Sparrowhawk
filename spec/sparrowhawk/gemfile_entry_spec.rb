@@ -7,7 +7,7 @@ module Sparrowhawk
 
     before do
       FileUtils.rm_rf current_dir
-      create_file 'Gemfile', 'This is the gemfile'
+      write_file 'Gemfile', 'This is the gemfile'
     end
 
     it "puts the gemfile in WEB-INF/" do

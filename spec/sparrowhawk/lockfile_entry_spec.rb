@@ -7,7 +7,7 @@ module Sparrowhawk
 
     before do
       FileUtils.rm_rf current_dir
-      create_file 'Gemfile.lock', 'This is the lockfile'
+      write_file 'Gemfile.lock', 'This is the lockfile'
     end
 
     it "puts the lockfile in WEB-INF/" do

@@ -1,7 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    aruba (0.2.8)
+    aruba (0.3.2)
       childprocess (~> 0.1.6)
       cucumber (~> 0.10.0)
       rspec (~> 2.3.0)
@@ -23,7 +23,7 @@ GEM
     gherkin (2.3.3-java)
       json (~> 1.4.6)
     jruby-jars (1.5.6)
-    jruby-rack (1.0.4)
+    jruby-rack (1.0.5)
     json (1.4.6)
     json (1.4.6-java)
     nokogiri (1.4.4)

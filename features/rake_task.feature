@@ -46,7 +46,7 @@ Feature: Rake task
      Then the output should contain "index.html"
       And the output should contain "WEB-INF/web.xml"
       And the output should contain "META-INF/MANIFEST.MF"
-      And the output should contain "WEB-INF/lib/jruby-rack-1.0.4.jar"
+      And the output should contain "WEB-INF/lib/jruby-rack-1.0.5.jar"
 
   Scenario: Renaming the task
     Given a file named "Rakefile" with:
@@ -100,7 +100,7 @@ Feature: Rake task
      Then the output should contain "index.html"
       And the output should contain "WEB-INF/web.xml"
       And the output should contain "META-INF/MANIFEST.MF"
-      And the output should contain "WEB-INF/lib/jruby-rack-1.0.4.jar"
+      And the output should contain "WEB-INF/lib/jruby-rack-1.0.5.jar"
 
   Scenario: A generic rack application
     Given a file named "config.ru" with:

@@ -10,7 +10,7 @@ module Sparrowhawk
 
     before do
       FileUtils.rm_rf current_dir
-      create_file "Gemfile.lock", <<-LOCK
+      write_file "Gemfile.lock", <<-LOCK
 GEM
   remote: http://rubygems.org/
   specs:
@@ -30,7 +30,7 @@ DEPENDENCIES
   nokogiri
        LOCK
 
-      create_file "Gemfile", <<-GEMFILE
+      write_file "Gemfile", <<-GEMFILE
        source :gemcutter
        platform :jruby do
          gem 'activerecord-jdbc-adapter'

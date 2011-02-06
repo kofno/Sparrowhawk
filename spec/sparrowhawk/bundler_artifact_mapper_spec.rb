@@ -8,7 +8,7 @@ module Sparrowhawk
     before do
       FileUtils.rm_rf current_dir
 
-      create_file "Gemfile", <<-GEMFILE
+      write_file "Gemfile", <<-GEMFILE
         source :gemcutter
         gem 'logger', :groups => :production
         gem 'rspec', :groups => [:test, :development]

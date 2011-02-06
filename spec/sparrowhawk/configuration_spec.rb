@@ -7,8 +7,8 @@ module Sparrowhawk
 
     before do
       FileUtils.rm_rf current_dir
-      create_file "Gemfile", ""
-      create_file "Gemfile.lock", ""
+      write_file "Gemfile", ""
+      write_file "Gemfile.lock", ""
     end
   
     it "includes the application's 'public' directory" do
@@ -88,14 +88,14 @@ module Sparrowhawk
       end
 
       it "is detected by default by looking for config.ru" do
-        create_file "config.ru", "pfffft"
+        write_file "config.ru", "pfffft"
         in_current_dir do
           config.should be_a_rack_app
         end
       end
 
       it "can use any file a the rack configuration" do
-        create_file "rack_me_up.rb", "pffft"
+        write_file "rack_me_up.rb", "pffft"
         in_current_dir do
           config.rack_config = File.expand_path("rack_me_up.rb")
           config.should be_a_rack_app

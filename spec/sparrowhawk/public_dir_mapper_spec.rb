@@ -8,24 +8,24 @@ module Sparrowhawk
     before do
       FileUtils.rm_rf current_dir
 
-      create_file "public/index.html", <<-HTML
+      write_file "public/index.html", <<-HTML
         <html>
         <head><title>Welcome!</title></head>
         <body><h1>Welcome</h1></body>
         </html>
       HTML
 
-      create_file "public/javascripts/application.js", <<-JS
+      write_file "public/javascripts/application.js", <<-JS
         $(function() { doSomeStuff(); });
       JS
 
-      create_file "public/stylesheets/structure.css", <<-CSS
+      write_file "public/stylesheets/structure.css", <<-CSS
         h1 { font-weight: bold; }
       CSS
 
-      create_file "public/sass/structure.sass", "Pretend this is sass"
+      write_file "public/sass/structure.sass", "Pretend this is sass"
 
-      create_file "other_js_dir/other.js", "a symlinked js file"
+      write_file "other_js_dir/other.js", "a symlinked js file"
       in_current_dir do
         FileUtils.mkdir_p "public/javascripts/ext"
         FileUtils.ln_s File.expand_path('other_js_dir'), File.expand_path("public/javascripts/ext/other_js_dir")
